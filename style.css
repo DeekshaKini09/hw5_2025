@@ -1,0 +1,185 @@
+/* Step 1: Animate the logo with keyframes */
+
+@keyframes logo {    /* This creates the animation called "logo" for our logo */
+  0% {
+    width: 25px;     /* At the start, the logo is small */
+    opacity: 0;      /* At the start, the logo is invisible */
+  }
+  100% {
+    width: 475px;    /* At the end, the logo gets bigger */
+    opacity: 1;      /* At the end, the logo is fully visible */
+  }
+}
+
+#logo { 
+  animation: logo 5s ease forwards; /* This applies the "logo" animation to the element with id "logo" */
+}
+
+/* Step 2: Edit the body element to use the Poppins font */
+
+body {
+  font-family: "Poppins", serif;       /* main font as Poppins and fallback to serif */
+  background-image: url("../images/concrete_seamless.png"); /* background image */
+  background-color: #f1f1f1;        /* fallback color if the image fails to load */
+}
+
+/* Step 3: Edit the css for the header tag (all instances) to use flex to match our example.*/
+header {
+  display: flex;           /* This makes the header a flex container */  
+  align-items: center;     /* vertically centers the items in the header */
+  flex-direction: column;  /* stacks items vertically */
+}
+
+/* Step 4: Editing css to match given example */
+
+.nav_links {               /*selects class nav_links */
+  display: flex;           /* flex display */
+  flex-direction: column;  /* stacks items vertically */
+}
+
+/* STEP 5: Style the links so that they have the same color even after they have been visited */
+
+.nav_links a,
+.nav_links a:hover,
+.nav_links a:active,
+.nav_links a:visited {
+  color: blue;            /* ensures all states of links will be blue in color */
+}
+
+/* STEP 6: Identify the proper selector to style ONLY those header elements that are direct children of a card class.  The required styling is the following: background: #288088,solid 2px border using #45ADAD,20px of padding on the top and the bottom, 50px border-radius on the top left and right corners. */
+
+.card > header {                   /* selects header elements that are direct children of card class */
+  background: #288088;           /*follows the instruction given above */
+  border: solid 2px #45adad;     /*follows the instruction given above */
+  padding-top: 20px 0;             /*follows the instruction given above */
+  padding-bottom: 20px;            /*follows the instruction given above */
+  border-top-left-radius: 50px;    /*follows the instruction given above */
+  border-top-right-radius: 50px;   /*follows the instruction given above */
+}
+
+/* Step 7 to style card */
+.card {
+  flex-basis: 450px;                /* using flex-badid to set the initial width of the card*/
+  border-top-left-radius: 50px;     /* 50px radius for top left corner */
+  border-top-right-radius: 50px;    /* 50px radius for top right corner */
+}
+
+/* Step 8  to style pricing*/
+.pricing {
+  display: flex;                     /* makes the pricing a flex container */
+  flex-flow: row wrap;               /* allows items to wrap into new lines as needed */
+  justify-content: center;           /* centers the items horizontally */
+}
+
+/* Step 9: Style the images in the gallery class. These elements will have a solid 10px border with a color of #50C7C7, 10px margin on all four sides and a width of 300px.  */
+
+.gallery img {                         /* selects images inside the gallery class */
+  border: solid 10px #50c7c7;        /* using instruction above we set border to be solid with given color */
+  margin: 10px;                        /* using shorthand for margin to set all sides to be 10px on all four sides */
+  width: 300px;                        /* sets the width of the images to be 300px */
+}
+
+/* Step 10: css for the gallery class to match example.*/
+
+.gallery {                   /* selects the gallery class */
+  display: flex;             /* makes the gallery a flex container */
+  flex-flow: row wrap;       /* allows items to wrap into new lines */
+  justify-content: center;   /* centers the items horizontally */
+}
+
+/* Step 11: For screen-size greater than 900px: edit header tag and the nav_links class to match given example */
+
+@media (min-width: 900px) {        /* media query for screen sizes greater than 900px */
+  header {                         /* selects header tag first */
+    display: flex;                 /* makes the header a flex container */      
+    align-items: center;           /* vertically centers the items in the header */
+    flex-direction: row;           /* stacks items horizontally */
+    justify-content: space-between; /* adds space between items */
+  }
+
+  .nav_links {                     /* selects nav_links class */
+    display: flex;                 /* makes the nav_links a flex container */
+    flex-direction: row;           /* stacks items horizontally */
+    justify-content: flex-end;     /* aligns link items to the right */
+  }
+
+  /* Step 12: Edit the css for the pricing and card classes to match our example. Use a flex-property to specify a “size” of 275px. Notice that the elements do not have the same height, but do have the same width.*/
+
+  .pricing {                      /* starting with pricing class first we select the pricing class */
+    display: flex;                /* using flex display to make pricing a flex container */
+    flex-flow: row wrap;          /* sets direction to row and if needed wrap into new lines */
+    align-items: center;          /* vertically centers the items in the pricing */
+  }
+  .card {                    /* we then work on card by selecting card class */
+    flex-basis: 275px;       /* sets the initial width of the card to be 275px */
+  }
+
+  /* Step 13: Modify the header to stick to the top of the page when scrolling. */
+
+  body > header {         /* selects the header that is a direct child of the body and not main */
+    position: sticky;     /* sets the position to sticky so when you scroll the nav bar is still visible*/
+    top: 0;               /* sets the top position to 0 so it sticks to the top of the page */
+  }
+}
+
+/* Step 14: prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {      /* setting the media query to ensure prefer reduced motion can be enabled */
+  #logo {                                      /* specifically for the logo so we select the logo by id */
+    animation: none;                           /* disable the animation for the logo by saying none */
+  }
+}
+
+/* step 15,16,17: for print view edit the header to match the screenshot */
+
+@media print {                                      /* media query for print view */
+  body {                                            /* working on the body section we select the body element */
+    font-family: Arial, Helvetica, sans-serif;      /* set the font to Arial, Helvetica, sans-serif */
+    background-image: none;                         /* removes the background image */
+  }
+
+  header {                       /* to work on the header, we select the header tag */
+    display: flex;               /* make the header a flex container */
+    flex-direction: column;      /* stack items vertically */
+    align-items: center;         /* vertically center the items in the header */
+  }
+
+  nav {                   /* to work on the nav, we select the nav tag */
+    display: flex;        /* make the nav a flex container */
+    flex-direction: row;  /* stack items horizontally */
+    width: 100%;          /* set the width of the nav to 100% */
+  }
+  nav_links {                /* to work on the nav_links (without logo), we select the nav_links class */
+    display: flex;           /* make the nav_links a flex container */
+    flex-direction: row;     /* stack items horizontally */
+    justify-content: center; /* center the items in the nav_links */
+  }
+  ul.nav_links {                   /* to work on the individual links inside nav_links, we select the ul.nav_links */
+    display: flex;                 /* make the ul.nav_links a flex container */
+    flex-direction: row;           /* stack items horizontally */
+    justify-content: space-around; /* space the items evenly in the ul.nav_links to match screenshot */
+    width: 100%;                   /* set the width of the ul.nav_links to 100% */
+  }
+
+  /* Step 18,19,20,21: Edit the pricing class so that the elements align along the bottom.  As long as it aligns along the bottom we don't care if the cards aren't the same height. Add border, ensure gallery is hidden and add thumbs up to second item in list.  */
+
+  .pricing {              /* selects the pricing class */
+    display: flex;         /* makes the pricing a flex container */
+    align-items: flex-end; /* Align items to the bottom */
+    flex-wrap: nowrap;    /* Prevent wrapping to maintain alignment */
+  }
+
+  .card {             /* selects the card class */
+    border: 2px solid #45addd; /* Solid border with color */
+    flex-basis: 325px; /* Set the flex-basis to 325px */
+  }
+
+  #gallery,
+  .gallery {       /* selects both the id gallery and class gallery so the title is also hidden */
+    display: none; /* Hides the gallery section */
+  }
+
+  .card ul li:nth-of-type(2)::after { /* under the class selector, under ul, the second li is selected and a the pseudo element of ::after is used to add the thumbs up */
+    content: "\1F44D"; /* Unicode for thumbs-up */
+    margin-left: 5px; /* Adds a small space between the text and the thumbs-up */
+  }
+}
